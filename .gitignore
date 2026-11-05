@@ -1,0 +1,6 @@
+# Never commit private files
+Private/
+private/
+
+# CV PDF contains a phone number
+Ahn, Kristie.pdf

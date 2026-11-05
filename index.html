@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kristie Ahn</title>
+  <meta name="description" content="Kristie Ahn — Columbia Business School MBA candidate, former Head of Digital at Racquet Media, and former WTA professional tennis player and Board member." />
+  <style>
+    :root {
+      --cb: #9bcbeb;          /* Columbia blue */
+      --cb-soft: #e8f3fb;
+      --cb-tint: #f4f9fd;
+      --cb-deep: #1d4f91;     /* deep Columbia navy for text accents */
+      --ink: #14253a;
+      --muted: #55667a;
+      --line: #d7e5f0;
+      --card: #ffffff;
+      --radius: 16px;
+      --shadow: 0 1px 2px rgba(20, 37, 58, .04), 0 8px 24px rgba(29, 79, 145, .07);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--cb-tint);
+    }
+    a { color: var(--cb-deep); }
+    img { max-width: 100%; }
+    .wrap { width: min(1080px, 100% - 40px); margin-inline: auto; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: saturate(160%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+    .brand { font-weight: 700; letter-spacing: .02em; color: var(--ink); text-decoration: none; }
+    .brand span { color: var(--cb-deep); }
+    .nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+    .nav ul a {
+      display: block; padding: 6px 12px; border-radius: 999px;
+      font-size: .9rem; font-weight: 500; color: var(--muted); text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .nav ul a:hover, .nav ul a:focus-visible { background: var(--cb-soft); color: var(--cb-deep); }
+    .icons { display: flex; gap: 6px; }
+    .icons a {
+      display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+      color: var(--muted); transition: background .15s, color .15s;
+    }
+    .icons a:hover { background: var(--cb-soft); color: var(--cb-deep); }
+    .icons svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* Hero */
+    .hero { padding: 56px 0 32px; }
+    .hero-grid { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: center; }
+    .portrait {
+      width: 220px; aspect-ratio: 1; object-fit: cover; border-radius: 50%;
+      border: 6px solid #fff; box-shadow: 0 0 0 2px var(--cb), var(--shadow);
+    }
+    .kicker { margin: 0 0 6px; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cb-deep); }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.05; margin: 0 0 14px; letter-spacing: -.01em; }
+    .lede { margin: 0 0 22px; max-width: 60ch; color: var(--muted); font-size: 1.08rem; }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
+      font-weight: 600; font-size: .92rem; text-decoration: none; transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn.primary { background: var(--cb-deep); color: #fff; }
+    .btn.ghost { background: #fff; color: var(--cb-deep); border: 1px solid var(--line); }
+
+    /* Highlight tiles */
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+    .tile {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 18px; box-shadow: var(--shadow); border-top: 4px solid var(--cb);
+    }
+    .tile b { display: block; font-size: 1.6rem; line-height: 1.1; color: var(--cb-deep); }
+    .tile small { color: var(--muted); font-size: .85rem; }
+
+    /* Sections */
+    section { padding: 40px 0; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+    .sec-head .num { font-size: .8rem; font-weight: 700; color: var(--cb-deep); background: var(--cb-soft); padding: 3px 10px; border-radius: 999px; }
+    h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; font-size: 1.9rem; margin: 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 24px; box-shadow: var(--shadow);
+    }
+    .card + .card { margin-top: 18px; }
+    .grid-2 .card + .card { margin-top: 0; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    h3 { margin: 0; font-size: 1.15rem; letter-spacing: .01em; }
+    .where { color: var(--muted); font-size: .9rem; }
+    .sub { margin: 2px 0 0; color: var(--muted); font-size: .95rem; }
+    .pill { display: inline-block; font-size: .78rem; font-weight: 600; color: var(--cb-deep); background: var(--cb-soft); padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+    .role { margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--line); }
+    .role:first-of-type { border-top: 0; padding-top: 0; }
+    h4 { margin: 0; font-size: 1rem; }
+    dl { margin: 14px 0 0; }
+    dt { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cb-deep); margin-top: 12px; }
+    dd { margin: 4px 0 0; }
+    ul.bullets { margin: 12px 0 0; padding-left: 1.1rem; }
+    ul.bullets li { margin: 6px 0; }
+    ul.bullets li::marker { color: var(--cb); }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .chip { font-size: .85rem; background: var(--cb-tint); border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; }
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .info-grid .card { margin: 0; }
+    .info-grid h3 { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cb-deep); margin-bottom: 8px; }
+
+    footer { padding: 36px 0 48px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); margin-top: 24px; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    @media (max-width: 860px) {
+      .tiles { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .info-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav ul { display: none; }
+      .hero { padding-top: 36px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; text-align: center; }
+      .portrait { width: 160px; margin-inline: auto; }
+      .lede { margin-inline: auto; }
+      .btns { justify-content: center; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="brand" href="#top">Kristie <span>Ahn</span></a>
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#additional">Additional</a></li>
+      </ul>
+      <div class="icons">
+        <a href="https://www.linkedin.com/in/kristieahn615/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a href="https://github.com/Kristie-Ahn" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <img class="portrait" src="photo.jpg" alt="Headshot of Kristie Ahn" />
+        <div>
+          <p class="kicker">MBA, Finance · Columbia Business School</p>
+          <h1>Kristie Ahn</h1>
+          <p class="lede">
+            From the WTA Tour to the boardroom to the newsroom. Former professional tennis player and
+            WTA Board member, most recently Head of Digital at Racquet Media, now pursuing an MBA in
+            Finance at Columbia Business School.
+          </p>
+          <div class="btns">
+            <a class="btn primary" href="https://www.linkedin.com/in/kristieahn615/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            <a class="btn ghost" href="mailto:KrAhn27@gsb.columbia.edu">KrAhn27@gsb.columbia.edu</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tiles" aria-label="Highlights">
+        <div class="tile"><b>#87</b><small>Career-high WTA singles ranking</small></div>
+        <div class="tile"><b>2013</b><small>NCAA Champion, Stanford</small></div>
+        <div class="tile"><b>$150M</b><small>CVC Capital investment evaluated as WTA Board member</small></div>
+        <div class="tile"><b>+550%</b><small>YoY viewership growth at Racquet Media</small></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="sec-head"><span class="num">01</span><h2>Education</h2></div>
+      <div class="grid-2">
+        <article class="card">
+          <div class="row"><h3>Columbia Business School</h3><span class="pill">2025–2027</span></div>
+          <p class="sub">MBA, Finance, May 2027 · <span class="where">New York, NY</span></p>
+          <dl>
+            <dt>Leadership</dt>
+            <dd>Sports Business Association AVP of Events; Football Club AVP of Marketing</dd>
+            <dt>Member</dt>
+            <dd class="chips">
+              <span class="chip">Investment Banking Club</span>
+              <span class="chip">Sports Business Association</span>
+              <span class="chip">Asian Business Association</span>
+              <span class="chip">CBS Rugby FC</span>
+              <span class="chip">Football Club</span>
+            </dd>
+          </dl>
+        </article>
+        <article class="card">
+          <div class="row"><h3>Stanford University</h3><span class="pill">2010–2014</span></div>
+          <p class="sub">BA, Science, Technology, &amp; Society, June 2014 · <span class="where">Palo Alto, CA</span></p>
+          <dl>
+            <dt>Athletics / Honors</dt>
+            <dd>
+              <ul class="bullets">
+                <li>2x Captain – Women's Tennis</li>
+                <li>2014 Stanford Award of Excellence</li>
+                <li>3x All-American</li>
+                <li>2014 ITA National Senior Player of the Year</li>
+                <li>2013 NCAA Champion</li>
+              </ul>
+            </dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="sec-head"><span class="num">02</span><h2>Experience</h2></div>
+
+      <article class="card">
+        <div class="row"><h3>Racquet Media</h3><span class="pill">2023–2025</span></div>
+        <p class="sub">Lifestyle media brand centered around tennis · <span class="where">New York, NY</span></p>
+        <div class="role">
+          <h4>Head of Digital</h4>
+          <ul class="bullets">
+            <li>Spearheaded digital transformation from print-only to multi-platform, returning the business to profitability in 2024</li>
+            <li>Secured Series A-2 financing (led by Lessin Media Company): Supported the process by developing investor materials and term sheet drafts</li>
+            <li>Conducted deep-dive research on key stakeholders and brand positioning within the tennis landscape, producing strategic insights that informed Racquet's growth and strategy</li>
+            <li>Designed and executed digital growth plan, driving +13% YoY online sales and boosting conversion across social, newsletter, and web channels</li>
+            <li>Directed content and social campaigns resulting in a +550% YoY increase in viewership and stronger audience engagement</li>
+            <li>Led branded content and experiential activations, delivering 33% profit margins on average across editorial, digital, and live events, strengthening brand visibility</li>
+            <li>Oversaw website redesign and platform migration, streamlining operations, and accelerating subscriber acquisition +83% YoY</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="row"><h3>Women's Tennis Association (WTA)</h3><span class="pill">2014–2023</span></div>
+        <p class="sub"><span class="where">Remote</span></p>
+        <div class="role">
+          <div class="row"><h4>Board of Directors</h4><span class="where">2021–2023</span></div>
+          <ul class="bullets">
+            <li>Evaluated and supported CVC Capital's $150M investment in the WTA; advocated for players' interests in financial and operational discussions regarding monetization, betting rights, and revenue-sharing models</li>
+            <li>Redesigned player per diem allowances into a fairer, cost-neutral system, eliminating out-of-pocket accommodation expenses for lower-ranked players</li>
+            <li>Proposed and implemented pension vesting reform from five to three years, improving retention by ~30% annually</li>
+            <li>Led restructuring of WTA ranking points system; assessed historical data and modeled alternative distributions to achieve a more balanced allocation across tournaments</li>
+            <li>Co-created the Rookie Program to onboard and enhance the player experience for new Tour members</li>
+          </ul>
+        </div>
+        <div class="role">
+          <div class="row"><h4>Professional Tennis Player</h4><span class="where">2014–2021</span></div>
+          <ul class="bullets">
+            <li>Achieved career-high WTA singles ranking of #87; competed in all four Grand Slams; in 2019, became the first Asian-American woman to reach the round of 16 at a Grand Slam since 2000</li>
+            <li>Managed competition schedule, sponsorship negotiations, annual expense budget, and tax compliance across 15+ countries</li>
+            <li>Served on the WTA Players' Council (2018–2020); Developed allocation framework for COVID Player Relief Fund based on financial impact analysis to ensure equity</li>
+            <li>Recognized twice with the Peachy Kellmeyer Player Service Award, voted by tour players for contributions to player welfare and WTA initiatives</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ADDITIONAL INFORMATION -->
+    <section id="additional">
+      <div class="sec-head"><span class="num">03</span><h2>Additional Information</h2></div>
+      <div class="info-grid">
+        <div class="card">
+          <h3>Certifications</h3>
+          <ul class="bullets">
+            <li>Berkeley's Math for Management</li>
+            <li>Harvard Business School's Crossover into Business Program</li>
+            <li>General Assembly's User Experience Design Bootcamp</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Volunteer Work</h3>
+          <ul class="bullets">
+            <li>New York Junior Tennis &amp; Learning</li>
+            <li>Kings County Tennis League</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p style="margin:0">Korean (conversational)</p>
+        </div>
+        <div class="card">
+          <h3>Interests</h3>
+          <div class="chips">
+            <span class="chip">Padel enthusiast</span>
+            <span class="chip">Alternative rock / metalhead</span>
+            <span class="chip">Plant mom</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Kristie Ahn</span>
+      <span>
+        <a href="https://www.linkedin.com/in/kristieahn615/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/Kristie-Ahn" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="mailto:KrAhn27@gsb.columbia.edu">Email</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
